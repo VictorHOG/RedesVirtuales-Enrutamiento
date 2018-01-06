@@ -1,1 +1,8 @@
+# Se debe modificar el archivo en /etc/network/interfaces
+# Clic derecho sobre el contenedor -> edit config: descomentar las dos últimas líneas
+
+# En la consola de Ubuntu-1
 dhclient eth0
+
+# Para verificar la ip asignada
+ifconfig
