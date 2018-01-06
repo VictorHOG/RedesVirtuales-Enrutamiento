@@ -1,6 +1,6 @@
 # Proyecto II - Fundamentos de Redes
 
-## *Integrantes:
+## *Integrantes:*
 
 * Diana Melissa Millares - 1526062
 * Carlos Felipe Montoya -
