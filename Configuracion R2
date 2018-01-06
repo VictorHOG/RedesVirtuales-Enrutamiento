@@ -2,7 +2,7 @@
 
 # En la consola de R2
 configure terminal
-interface FastEthernet 0/1
+interface FastEthernet 0/0
 ip address dhcp
 no shutdown
 end
@@ -12,7 +12,7 @@ R2#show ip interface brief
 
 # Para configurar la interfaz de R2
 configure terminal
-interface FastEthernet 0/0
+interface FastEthernet 1/0
 ip address 10.10.10.5 255.255.255.0
 no shutdown
 exit
