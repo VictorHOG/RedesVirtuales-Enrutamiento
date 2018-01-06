@@ -34,11 +34,11 @@ show ip interface brief
 ping 10.10.10.5
 
 # Configurar DNS en R1
-R1#configure terminal
-R1(config)#ip domain-lookup
-R1(config)#ip name-server 8.8.8.8
-R1(config)#end
+configure terminal
+ip domain-lookup
+ip name-server 8.8.8.8
+end
 
 # Después de configurar R2, verificar
-R1#ping google.com
-R1#wr
+ping google.com
+wr
