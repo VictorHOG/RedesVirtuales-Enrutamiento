@@ -1,5 +1,6 @@
-# En la consola de R2
+# R2 es un cliente DHCP de Nat1
 
+# En la consola de R2
 configure terminal
 interface FastEthernet 0/1
 ip address dhcp
