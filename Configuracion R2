@@ -23,19 +23,19 @@ wr
 ping 10.10.10.4
 
 # Verificar que R2 usa el servidor DNS correcto
-R2#configure terminal
-R2(config)# ip domain-lookup
-R2(config)# ip name-server 8.8.8.8
-R2(config)# end
-R2#ping google.com
+configure terminal
+ip domain-lookup
+ip name-server 8.8.8.8
+end
+ping google.com
 
 # Configurar NAT en R2
-R2#configure terminal
-R2(config)#interface FastEthernet 0/0
-R2(config-if)#ip nat outside
-R2(config-if)#interface FastEthernet 1/0
-R2(config-if)#ip nat inside
-R2(config)#ip nat inside source list 1 interface FastEthernet 0/0 overload
-R2(config)#access-list 1 permit 10.0.0.0 0.255.255.255
-R2(config)#end
-R2# wr
+configure terminal
+interface FastEthernet 0/0
+ip nat outside
+interface FastEthernet 1/0
+ip nat inside
+ip nat inside source list 1 interface FastEthernet 0/0 overload
+access-list 1 permit 10.0.0.0 0.255.255.255
+end
+wr
