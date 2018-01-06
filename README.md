@@ -3,8 +3,8 @@
 ## *Integrantes:*
 
 * Diana Melissa Millares - 1526062
-* Carlos Felipe Montoya -
-* Victor Hugo Ortega -
+* Carlos Felipe Montoya - 1535038
+* Victor Hugo Ortega - 1532342
 
 ## *Configuración Contenedor:*
 
