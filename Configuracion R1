@@ -40,4 +40,5 @@ R1(config)#ip name-server 8.8.8.8
 R1(config)#end
 
 # Después de configurar R2, verificar
-R1# ping google.com
+R1#ping google.com
+R1#wr
