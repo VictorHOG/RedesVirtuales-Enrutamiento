@@ -5,6 +5,7 @@ configure terminal
 service dhcp 
 ip dhcp pool red-10    # Da el nombre red-10 al pool de direcciones (ámbito, conjunto de direcciones) a utilizar 
 network 10.0.0.0 255.0.0.0
+default-router 10.0.0.1 
 dns-server 10.0.0.3
 domain-name R1.com
 exit
