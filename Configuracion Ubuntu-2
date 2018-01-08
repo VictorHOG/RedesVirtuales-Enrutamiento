@@ -29,6 +29,7 @@ sudo apt-get install docker-ce
 sudo docker run hello-world
 
 # Instalar nginx
+sudo apt-get update
 sudo apt-get install nginx
 
 # Servidor web nginx
