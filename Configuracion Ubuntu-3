@@ -29,5 +29,6 @@ sudo apt-get install docker-ce
 sudo docker run hello-world
 
 # sniffer wireshark
+sudo apt-get update
 sudo apt-get install wireshark
 docker run -ti --net=host --privileged -v $HOME:/root:ro -e XAUTHORITY=/root/.Xauthority -e DISPLAY=$DISPLAY manell/wireshark
