@@ -29,7 +29,7 @@ ip name-server 8.8.8.8
 end
 ping google.com
 
-# Configurar NAT en R2
+# Configurar NAT en R2, R2 debe tener 256 MiB de memoria
 configure terminal
 interface FastEthernet 0/0
 ip nat outside
