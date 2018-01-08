@@ -6,3 +6,28 @@ dhclient eth0
 
 # Para verificar la ip asignada
 ifconfig
+
+# Instalar nano para posterior uso
+apt-get install nano
+
+# Instalar docker en Ubuntu-3
+sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+sudo apt-get install docker-ce
+sudo docker run hello-world
+
+# sniffer wireshark
+sudo apt-get install wireshark
+docker run -ti --net=host --privileged -v $HOME:/root:ro -e XAUTHORITY=/root/.Xauthority -e DISPLAY=$DISPLAY manell/wireshark
