@@ -8,9 +8,7 @@
 # Modificar resolv.conf (nameserver 8.8.8.8)
 sudo vi /etc/resolv.conf
 
-# Instalar nginx
+# Instalar servidor web apache2
 sudo apt-get update
-sudo apt-get install nginx
-
-# Servidor web nginx
-docker run --rm --name demo-nginx -d -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro nginx
+sudo apt-get install apache2
+sudo systemctl restart apache2
