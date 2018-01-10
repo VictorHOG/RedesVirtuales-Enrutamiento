@@ -5,15 +5,6 @@
 # Se debe modificar el archivo en /etc/network/interfaces
 # Clic derecho sobre el contenedor -> edit config: descomentar las dos últimas líneas
 
-# En la consola de Ubuntu-3
-dhclient eth0
-
-# Para verificar la ip asignada
-ifconfig
-
-# Instalar nano para posterior uso
-apt-get install nano
-
 # Instalar docker en Ubuntu-3
 sudo apt-get update
 sudo apt-get install \
