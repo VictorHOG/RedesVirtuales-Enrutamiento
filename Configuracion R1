@@ -66,7 +66,7 @@ router rip
 no auto-summary
 version 2
 network 10.10.20.0
-network 192.168.120.1
+network 192.168.120.0
 exit
 exit
 wr
