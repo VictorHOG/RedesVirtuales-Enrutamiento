@@ -18,3 +18,4 @@ Se usó el servidor GNS3 para Nat1, SW1 y Hub1
 
 - https://www.uv.es/fsoriano/AER/pr9_NAT.pdf
 - https://docs.gns3.com/1EjaCJlcM0RYIyyE_MbJOYNatEBnffOX5tcnJShR_KfY/index.html
+- https://www.youtube.com/watch?v=06wQQN1eXcs
