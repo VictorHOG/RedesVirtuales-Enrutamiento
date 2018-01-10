@@ -1,16 +1,21 @@
+# Diana Melissa Millares - 1526062
+# Felipe Montoya - 1535038
+# Víctor hugo Ortega Gómez - 1532342
+
 # La interfaz de red de R1 debe tomar su configuración de un servidor de DHCP corriendo dentro de sí mismo
 
-# En la consola de R1
+# Configuración de servidor DHCP en R1 (En la consola de R1)
 configure terminal
 service dhcp 
-ip dhcp pool red-10    # Da el nombre red-10 al pool de direcciones (ámbito, conjunto de direcciones) a utilizar 
-network 10.0.0.0 255.0.0.0
-default-router 10.0.0.1 
-dns-server 10.0.0.3
-domain-name R1.com
+ip dhcp pool ServerDHCP # Da el nombre ServerDHCP al conjunto de direcciones a utilizar 
+network 192.168.120.0 255.255.255.0
+default-router 192.168.120.1 
+dns-server 192.168.120.1
+lease 12
 exit
-ip dhcp excluded-address 10.0.0.1 10.0.0.10 
+ip dhcp excluded-address 192.168.120.1 
 exit
+wr
 
 # Configuracion interfaz f0/0 de R1
 configure terminal
@@ -24,22 +29,44 @@ wr
 # Configuracion interfaz f1/0 de R1
 configure terminal
 interface FastEthernet 1/0
-ip address 10.10.10.4 255.255.255.0
+ip address 192.168.120.1 255.255.255.0
 no shutdown
 exit
 exit
 wr
 
-# Verificar
+# Confirmar dirección asignada y verificar conexión con R2 (después de configurar R2)
 show ip interface brief
-ping 10.10.10.5
+ping 10.10.20.5
+
+# Configurar OSPF en R1
+configure terminal 
+router ospf 1
+network 192.168.120.0 0.0.0.255 area 0 
+network 10.0.0.0 0.0.0.255 area 0     
+default-informatio originate
+end
+wr
 
 # Configurar DNS en R1
 configure terminal
 ip domain-lookup
+ip route 0.0.0.0 0.0.0.0 10.10.20.5
 ip name-server 8.8.8.8
 end
+wr
 
 # Después de configurar R2, verificar
 ping google.com
+
+# Configurando el enrutamiento dinámico
+# Indicar en los parámetros de la configuración del enrutador que redes este conoce.
+configure terminal
+router rip
+no auto-summary
+version 2
+network 10.10.20.0
+network 192.168.120.1
+exit
+exit
 wr
