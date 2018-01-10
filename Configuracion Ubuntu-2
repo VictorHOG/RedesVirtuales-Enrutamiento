@@ -5,6 +5,9 @@
 # Se debe modificar el archivo en /etc/network/interfaces
 # Clic derecho sobre el contenedor -> edit config: descomentar las dos últimas líneas
 
+# Modificar resolv.conf (nameserver 8.8.8.8)
+sudo vi /etc/resolv.conf
+
 # Instalar nginx
 sudo apt-get update
 sudo apt-get install nginx
