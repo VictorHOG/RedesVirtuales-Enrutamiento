@@ -1,41 +1,64 @@
-# R2 es un cliente DHCP de Nat1
+# Diana Melissa Millares - 1526062
+# Felipe Montoya - 1535038
+# Víctor Hugo Ortega Gómez - 1532342
 
-# En la consola de R2
+# R2 es un cliente DHCP de Nat1 (En la consola de R2)
 configure terminal
-interface FastEthernet 0/0
+interface FastEthernet 1/0
 ip address dhcp
 no shutdown
 end
-
-# Para ver la dirección asignada por Nat1:
-R2#show ip interface brief
-
-# Para configurar la interfaz de R2
-configure terminal
-interface FastEthernet 1/0
-ip address 10.10.10.5 255.255.255.0
-no shutdown
-exit
-exit
 wr
 
-# Después de configurar R1, para verificar conexión
-ping 10.10.10.4
+# Confirmar que la interfaz esta activada y que la dirección fue asignada por un servidor de DHCP.
+show ip interface FastEthernet 1/0
 
 # Verificar que R2 usa el servidor DNS correcto
 configure terminal
 ip domain-lookup
 ip name-server 8.8.8.8
 end
+wr
 ping google.com
 
-# Configurar NAT en R2, R2 debe tener 256 MiB de memoria
+# Configurar NAT en R2 (R2 debe tener 256 MiB de memoria)
 configure terminal
-interface FastEthernet 0/0
-ip nat outside
 interface FastEthernet 1/0
+ip nat outside
+interface FastEthernet 0/0
 ip nat inside
-ip nat inside source list 1 interface FastEthernet 0/0 overload
+ip nat inside source list 1 interface FastEthernet 1/0 overload
 access-list 1 permit 10.0.0.0 0.255.255.255
 end
+wr
+
+# Configurar OSPF en R2
+configure terminal
+router ospf 1
+network 10.0.0.0 0.0.0.255 area 0
+end
+wr
+
+# Para configurar la interfaz f0/0 de R2
+configure terminal
+interface FastEthernet 0/0
+ip address 10.10.20.5 255.255.255.0
+no shutdown
+exit
+exit
+wr
+
+# Después de configurar R1, verificar conexión
+ping 10.10.20.4
+
+#Configurar el enrutamiento dinámico
+#Indicar en los parámetros de la configuración del enrutador que redes este conoce.
+configure terminal
+router rip
+no auto-summary
+version 2
+network 10.10.20.0
+network 192.168.122.0
+exit
+exit
 wr
